@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sleep Analysis</title>
+
+    <style>
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI";
+        background: #f5f5f7;
+        margin: 0;
+        padding: 20px;
+    }
+
+        .container {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+        .card {
+        padding: 18px;
+        border-radius: 16px;
+        background: white;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        transition: 0.3s;
+    }
+
+
+    /* 🟢 good */
+    .good {
+        border-left: 6px solid #34c759;
+    }
+
+    /* 🟡 warning */
+    .warning {
+        border-left: 6px solid #ffcc00;
+    }
+
+    /* 🔴 danger */
+    .danger {
+        border-left: 6px solid #ff3b30;
+    }
+
+    h1, h2, h3 {
+        margin: 0;
+    }
+        .card {
+            padding: 20px;
+            margin: 10px 0;
+            background: #f7f7f7;
+            border-radius: 10px;
+    }
+
+        .score {
+            font-size: 20px;
+            font-weight: bold;
+    }
+
+        .timeline {
+            position: relative;
+            width: 100%;
+            height: 60px;
+            background: #eee;
+            border-radius: 10px;
+            margin-top: 20px;
+    }
+
+        .marker {
+            position: absolute;
+            top: 10px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            transform: translateX(-50%);
+            font-size: 14px;
+    }
+
+        .sleep-bar {
+            position: absolute;
+            top: 20px;
+            height: 20px;
+            background: rgba(0, 120, 255, 0.5);
+            border-radius: 10px;
+    }
+
+    </style>
+</head>
+
+<body>
+
+<h1>Sleep Analysis Dashboard</h1>
+
+<!-- 🟣 OVERALL CARD（主卡） -->
+<div class="card {{ overall_risk }}" style="padding:25px;">
+    <h2>Overall Sleep Score</h2>
+    <h1 style="font-size:40px; margin:10px 0;">
+        {{ overall }}
+    </h1>
+</div>
+
+
+<!-- 🟢 Sleep Duration -->
+<div class="card {{ sleep_risk }}">
+    <h3>Sleep Duration</h3>
+    <p style="font-size:22px;">
+        {{ sleep_duration }} h
+    </p>
+</div>
+
+
+<!-- 🟡 Awakenings -->
+<div class="card">
+    <h3>Night Awakenings</h3>
+    <p style="font-size:22px;">
+        {{ awakenings }}
+    </p>
+</div>
+
+
+<!-- 🔵 Sleep Quality -->
+<div class="card {{ quality_risk }}">
+    <h3>Sleep Quality</h3>
+    <p style="font-size:22px;">
+        {{ sleep_quality }}
+    </p>
+</div>
+
+<!-- ⏱ timeline -->
+<h2>Sleep Timeline (24h)</h2>
+
+<div class="timeline">
+
+
+    <!-- bed -->
+    <div class="marker" style="left: {{ t1 }}%; background: gray;">🛏</div>
+
+    <!-- sleep -->
+    <div class="marker" style="left: {{ t2 }}%; background: blue;">😴</div>
+
+    <!-- wake -->
+    <div class="marker" style="left: {{ t3 }}%; background: lightblue;">☀</div>
+
+    <!-- get up -->
+    <div class="marker" style="left: {{ t4 }}%; background: orange;">🚶</div>
+
+    <!-- sleep block -->
+    <div class="sleep-bar"
+         style="left: {{ t2 }}%; width: calc({{ t3 }}% - {{ t2 }}%);">
+    </div>
+
+
+</div>
+
+<h2>Sleep Feedback</h2>
+
+<ul>
+    {% for c in comments %}
+        <li class="{{ overall_risk }}">{{ c }}</li>
+    {% endfor %}
+</ul>
+
+<br>
+<a href="/">← Back</a>
+
+</body>
+</html>

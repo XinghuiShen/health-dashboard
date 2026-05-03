@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sleep Analysis</title>
+</head>
+
+<body>
+
+<h1>Sleep Tracker</h1>
+
+<form action="/result" method="post">
+
+    <label>Bed Time:</label>
+    <input type="time" name="bed_time" required>
+    <br><br>
+
+    <label>Sleep Time:</label>
+    <input type="time" name="sleep_time" required>
+    <br><br>
+
+    <label>Wake Time:</label>
+    <input type="time" name="wake_time" required>
+    <br><br>
+
+    <label>Get Up Time:</label>
+    <input type="time" name="getup_time" required>
+    <br><br>
+
+    <label>Night Awakenings:</label>
+    <input type="number" name="wake_count" min="0" required>
+    <br><br>
+
+    <button type="submit">Analyze</button>
+
+</form>
+
+</body>
+</html>

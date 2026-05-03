@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advanced Health Analysis</title>
+</head>
+<body>
+
+<h1>Advanced Health Analysis</h1>
+
+<form action="/advanced_result" method="post">
+
+    <h3>BMI Inputs</h3>
+    <label>Height (cm):</label>
+    <input type="number" name="height" required>
+
+    <br><br>
+
+    <label>Weight (kg):</label>
+    <input type="number" name="weight" required>
+
+    <br><br>
+
+    <h3>Blood Pressure (optional)</h3>
+    <label>Systolic (HBP):</label>
+    <input type="number" name="systolic">
+
+    <label>Diastolic (LBP):</label>
+    <input type="number" name="diastolic">
+
+    <label>Pulse:</label>
+    <input type="number" name="pulse">
+
+    <br><br>
+
+    <h3>Blood Glucose (optional)</h3>
+    <label>Glucose:</label>
+    <input type="number" step="0.1" name="glucose">
+
+    <br><br>
+
+    <button type="submit">Analyze</button>
+
+</form>
+
+</body>
+</html>
